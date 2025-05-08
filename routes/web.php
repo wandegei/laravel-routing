@@ -2,32 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return ('hello from laravel');
-// });
-
-Route::get('/',function (){
-    return ('hello from laravel josh');
+Route::get('/', function () {
+    return 'Hello from Laravel Josh!';
 });
 
-Route::get('about',function (){
-    return ('About Us');
+Route::get('about-Us', function () {
+    $name = "tester";
+    $email = 'tester@gmail.com';
+    $items = ['Laravel', 'Vue', 'Tailwind', 'Livewire', 'Vite'];
+    $userStatus = 'active';
+    $score = 75;
+
+    return view('aboutus', compact('name', 'email', 'items', 'userStatus', 'score'));
 });
 
-// Route::get('details/students',function (){
-//     return ('this is students ');
-// });
+Route::get('contact-Us', function () {
+    return view('contactus');
+});
 
-// Route::get('details/teachers',function (){
-//     return ('this is teachers ');
-// });
-
-Route::prefix('details')->group(function () {
-    Route::get('students', function () {
-        return 'this is students';
-    });
-
-    Route::get('teachers', function () {
-        return 'this is teachers';
-    });
+Route::fallback(function () {
+    return 'This page is not found. Please try again.';
 });
